@@ -38,13 +38,13 @@ TBD
 # Steps
 
 1. [Clone the repo](#1-clone-the-repo)
-2. [Create Watson Visual Recognition and natural language understanding service with IBM Cloud](#2-create-watson-visual-recognition-and-natural-language-understanding-service-with-ibm-cloud)
+2. [Create Watson Visual Recognition and Natural Language Understanding service with IBM Cloud](#2-create-watson-visual-recognition-and-natural-language-understanding-service-with-ibm-cloud)
 3. [Create Slack App and Bot for a workspace](#3-create-slack-app-and-bot-for-a-workspace)
 4. [Deploy the function to IBM Cloud](#4-deploy-the-function-to-ibm-cloud)
 5. [Test using slack](#5-test-using-slack)
 
 
-## Clone the repo
+## 1. Clone the repo
 
 Clone the `cognitive-moderator-service` repo locally. In a terminal, run:
 
@@ -53,7 +53,7 @@ $ git clone https://github.com/IBM/cognitive-moderator-service.git
 $ cd cognitive-moderator-service
 ```
 
-## Create Watson Visual Recognition and natural language understanding service with IBM Cloud
+## 2. Create Watson Visual Recognition and natural language understanding service with IBM Cloud
 
 If you do not already have a IBM Cloud account, [sign up for IBM Cloud](https://console.bluemix.net/registration).
 Create the following services:
@@ -63,7 +63,7 @@ Create the following services:
 
 > Make note of the service credentials when creating services which will be later used when creating a function.
 
-## Create Slack App and Bot for a workspace
+## 3. Create Slack App and Bot for a workspace
 
 * Go to Your Apps using the following link: https://api.slack.com/apps and click `Create New App` and fill out the `App Name` and the `Workspace` you would like to use it for and click `Create App`.
 
@@ -83,7 +83,7 @@ In the `Event Subscriptions` page, enable it by turning `on` using the `on/off` 
 
 ![](doc/source/images/events.png)
 
-* For now leave the `Request URL` empty. We will fill it up when the `IBM Cloud Function` is exposed through an API.
+* For now leave the `Request URL` empty. We will fill it in when the `IBM Cloud Function` is exposed through an API.
 
 * From `OAuth and Permissions`, Save the `OAuth Access Token` and `Bot User OAuth Access Token` for later use by the IBM cloud function.
 ![](doc/source/images/oauth-access-token.png)
@@ -98,7 +98,7 @@ Select `Permissions Scopes` that will be used by the bot that we will be creatin
 * Once this is done make sure you `reinstall or install app` from Install App section.
 ![](doc/source/images/reinstall-app.png)
 
-## Deploy the function to IBM Cloud
+## 4. Deploy the function to IBM Cloud
 Once the credentials for both IBM Cloud and Slack are noted, we can now deploy the function to IBM Cloud.
 
 copy `params.sample.json` to `params.json` using `cp params.sample.json params.json` and replace the values with the credentials you have noted in proper place holders.
@@ -120,9 +120,7 @@ copy `params.sample.json` to `params.json` using `cp params.sample.json params.j
 ```
 
 Make sure IBM cloud CLI are installed if you haven't already using the following link: 
-```
 https://console.bluemix.net/docs/cli/index.html#overview
-```
 
 * Deploy the function to IBM cloud. Make sure you are in the project directory then, from Terminal run:
 
@@ -161,7 +159,7 @@ Now you can login to IBM cloud and see the function by going to `IBM functions`,
 > Make sure the URL is verified. To be verified the API needs to return a response to the request that Slack sends to this `Request URL` with `challenge` parameter.
 
 
-## Test using slack
+## 5. Test using slack
 
 * **Test Case 1: Usage of rude messages**
 
@@ -181,7 +179,7 @@ When you upload an **explicit** image, the image will be deleted from the Slack 
 
 ![](doc/source/images/explicit-photo-upload-2.png)
 
-## Trouble Shooting
+## Troubleshooting
 
 * You can monitor logs and see the output of the each request and/or call to function from the `monitor` page of the function.
 ![](doc/source/images/monitor-function.png)
