@@ -2,7 +2,9 @@ import sys
 import os
 import urllib
 import json
-from watson_developer_cloud import VisualRecognitionV3
+import requests
+import subprocess
+import shutil
 from watson_developer_cloud import NaturalLanguageUnderstandingV1
 from watson_developer_cloud.natural_language_understanding_v1 import Features, EntitiesOptions, KeywordsOptions
 
@@ -29,26 +31,33 @@ def main(event):
         file_id = file_details['id']
         
         print('Downloading image...')
-        image_bytes = download_image(event,image_url)
+        image_bytes = download_image_requests(event,image_url)
         print('Saving image locally ...')
-        with open('./file.jpg', 'wb') as jpgFile:
-           jpgFile.write(image_bytes)
-            
-        print('Checking image for explicit content...' + image_url)        
-        visual_recognition = VisualRecognitionV3(
-            '2018-03-19',            
-            api_key=event['VISUAL_RECOGNITION_IAM_APIKEY'])
+        # with open('./file.jpg', 'wb') as jpgFile:
+        #   jpgFile.write(image_bytes)
         
-        with open('./file.jpg', 'rb') as images_file:
-            classes = visual_recognition.classify(
-                images_file,
-                threshold='0.6',
-                classifier_ids='default,explicit')
+        with open('./file.jpg', 'wb') as jpgFile:
+            image_bytes.raw.decode_content = True    
+            shutil.copyfileobj(image_bytes.raw, jpgFile)
+            
+        subprocess.call(["ls", "-l", "file.jpg"])
+        
+        print('Checking image for explicit content...' + image_url)  
+            
+        with open('./file.jpg', 'rb') as image_file:
+            classes = requests.post(
+                'https://gateway.watsonplatform.net/visual-recognition/api/v3/classify',
+                auth=('apikey', event['VISUAL_RECOGNITION_IAM_APIKEY']),
+                files={'images_file': image_file},
+                params={
+                    'version': '2016-05-20',
+                    'classifier_ids': 'explicit'})
             
         print('image classified for explicit content')
                 
-        print(json.dumps(classes, indent=2))
+        print(classes.json())
         is_explicit = False
+        print(classes['images'][0]['classifiers'])
             
         for i in classes['images'][0]['classifiers']:
             if i['classifier_id'] == 'explicit':
@@ -149,9 +158,15 @@ def contain_image(event):
     return True
 
 
+
 def download_image(event,url):
-    request = urllib.request.Request(url, headers={'Authorization': 'Bearer %s' % event['SLACK_ACCESS_TOKEN']})
+    # request = urllib.request.Request(url, headers={'Authorization': 'Bearer %s' % event['SLACK_ACCESS_TOKEN']})
+    request = urllib.request.Request(url)
     return urllib.request.urlopen(request).read()
+    
+def download_image_requests(event,url):
+    response = requests.get(url,stream=True, headers={'Authorization': 'Bearer %s' % event['SLACK_ACCESS_TOKEN']})
+    return response
 
 
 def delete_image(event,file_id):
