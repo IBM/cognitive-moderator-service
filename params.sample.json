@@ -5,7 +5,7 @@
     "VISUAL_RECOGNITION_IAM_APIKEY": "<Visual Recognition IAM API Key>",
 
     "SLACK_VERIFICATION_TOKEN": "<Slack Verification Token>",
-    "SLACK_ACCESS_TOKEN": "<Slack Access Tokekn>",
+    "SLACK_ACCESS_TOKEN": "<Slack OAuth Access Token>",
 
     "SLACK_MESSAGE_POST_URL": "https://slack.com/api/chat.postMessage",
     "SLACK_MESSAGE_DELETE_URL": "https://slack.com/api/files.delete"
