@@ -1,24 +1,33 @@
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
 #
+# https://www.apache.org/licenses/LICENSE-2.0
 #
-# main() will be run when you invoke this action
-#
-# @param Cloud Functions actions accept a single parameter, which must be a JSON object.
-#
-# @return The output of this action, which must be a JSON object.
-#
-#
-import sys
-import os
-import urllib
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 import json
+import os
 import requests
-import subprocess
 import shutil
+import subprocess
+import sys
+import urllib
+
 from watson_developer_cloud import NaturalLanguageUnderstandingV1
 from watson_developer_cloud.natural_language_understanding_v1 import Features, EntitiesOptions, KeywordsOptions
 
+
 SUPPORTED_IMAGES = ['image/jpeg', 'image/jpg', 'image/png']
 
+
+# main() will be run when you invoke this action
+# @param Cloud Functions actions accept a single parameter, which must be a JSON object.
+# @return The output of this action, which must be a JSON object.
 def main(event):
     print('Validating message...')
     print(event)
@@ -78,7 +87,7 @@ def main(event):
             print('Image displays explicit content- deleting from Slack Shared Files...')
             delete_image(event, file_id)
             print('Posting message to channel to notify users of file deletion...')
-            post_message(event, channel,"File removed due to contain explicit content")
+            post_message(event, channel, "File removed due to contain explicit content")
             
         return {"payload": "Done"}
         
@@ -86,11 +95,11 @@ def main(event):
     event_subtype = event_details.get('subtype')
     
     # skip reply messages sent from bot
-    if event_subtype=='bot_message':
+    if event_subtype == 'bot_message':
         return {"payload": "Done"}
     
     if message_text:
-        print('Text Message:'+message_text)
+        print('Text Message:' + message_text)
         natural_language_understanding = NaturalLanguageUnderstandingV1(
             username=event['NLU_USERNAME'],
             password=event['NLU_PASSWORD'],
@@ -133,6 +142,7 @@ def verify_token(event):
         return False
     return True
 
+
 def post_message(event,channel, text):
     url = event['SLACK_MESSAGE_POST_URL']
     data = urllib.parse.urlencode(
@@ -148,12 +158,13 @@ def post_message(event,channel, text):
     response = urllib.request.urlopen(request)
     print('Slack response: '+json.dumps(response.read().decode('utf-8'), indent=2))
 
+    
 def contain_image(event):
     event_details = event['event']
     file_subtype = event_details.get('subtype')
 
     if file_subtype != 'file_share':
-        print('Not a file event- ignoring event...')
+        print('Not a file event, ignoring event...')
         return False
 
     file_details = event_details['files']
@@ -161,18 +172,12 @@ def contain_image(event):
     file_size = file_details[0]['size']
     
     if mime_type not in SUPPORTED_IMAGES:
-        print('File is not an image- ignoring event...')
+        print('File is not an image, ignoring event...')
         return False
 
     return True
 
 
-
-def download_image(event,url):
-    # request = urllib.request.Request(url, headers={'Authorization': 'Bearer %s' % event['SLACK_ACCESS_TOKEN']})
-    request = urllib.request.Request(url)
-    return urllib.request.urlopen(request).read()
-    
 def download_image_requests(event,url):
     response = requests.get(url,stream=True, headers={'Authorization': 'Bearer %s' % event['SLACK_ACCESS_TOKEN']})
     return response
