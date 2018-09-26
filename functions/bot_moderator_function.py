@@ -1,3 +1,12 @@
+#
+#
+# main() will be run when you invoke this action
+#
+# @param Cloud Functions actions accept a single parameter, which must be a JSON object.
+#
+# @return The output of this action, which must be a JSON object.
+#
+#
 import sys
 import os
 import urllib
@@ -54,12 +63,12 @@ def main(event):
                     'classifier_ids': 'explicit'})
             
         print('image classified for explicit content')
-                
-        print(classes.json())
+        response_classes = classes.json();        
+        print(response_classes)
         is_explicit = False
-        print(classes['images'][0]['classifiers'])
+        print(response_classes['images'][0]['classifiers'])
             
-        for i in classes['images'][0]['classifiers']:
+        for i in response_classes['images'][0]['classifiers']:
             if i['classifier_id'] == 'explicit':
                 print(i['classes'][0]['class'])
                 if i['classes'][0]['class'] == 'explicit':
@@ -173,7 +182,7 @@ def delete_image(event,file_id):
     url = event['SLACK_MESSAGE_DELETE_URL']
     data = urllib.parse.urlencode(
         (
-            ("token", ACCESS_TOKEN),
+            ("token", event['SLACK_ACCESS_TOKEN']),
             ("file", file_id)
         )
     )
