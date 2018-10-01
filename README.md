@@ -1,4 +1,3 @@
-
 # Create a cognitive moderator chatbot for anger detection, natural language understanding and explicit images removal
 In this code pattern, we will create a chatbot using IBM functions and Watson services. The chatbot flow will be enhanced by using Visual Recognition and Natural Language Understanding to identify and remove explicit images and or detect anger and ugly messages 
 
@@ -178,6 +177,10 @@ When you upload an **explicit** image, the image will be deleted from the Slack 
 ![](doc/source/images/explicit-photo-upload.png)
 
 ![](doc/source/images/explicit-photo-upload-2.png)
+
+# Sample Output
+
+![](video/Bot4Code.gif)
 
 ## Troubleshooting
 
