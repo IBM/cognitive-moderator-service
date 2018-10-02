@@ -32,7 +32,7 @@ When the reader has completed this journey, they will understand how to:
 
 # Watch the Video
 
-[![]()](https://youtu.be/9c7NuamK8JA)
+[![](images/vid-thumb.png)](https://youtu.be/9c7NuamK8JA)
 
 
 # Steps
