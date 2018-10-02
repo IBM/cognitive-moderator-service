@@ -30,9 +30,10 @@ When the reader has completed this journey, they will understand how to:
 * [Slack Apps](https://api.slack.com/slack-apps) Customize functionality for your own workspace or build a beautiful bot to share with the world.
 * [Slack Bots](https://api.slack.com/bot-users) Enable conversations between users and apps in Slack by building bots.
 
-## Watch the Video
+# Watch the Video
 
-TBD
+[![](http://img.youtube.com/vi/9c7NuamK8JA/0.jpg)](https://youtu.be/9c7NuamK8JA)
+
 
 # Steps
 
