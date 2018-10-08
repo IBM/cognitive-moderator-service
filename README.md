@@ -100,7 +100,7 @@ Select `Permissions Scopes` that will be used by the bot that we will be creatin
 ## 4. Deploy the function to IBM Cloud
 Once the credentials for both IBM Cloud and Slack are noted, we can now deploy the function to IBM Cloud.
 
-copy `params.sample.json` to `params.json` using `cp params.sample.json params.json` and replace the values with the credentials you have noted in proper place holders.
+Copy `params.sample.json` to `params.json` using `cp params.sample.json params.json` and replace the values with the credentials you have noted in proper place holders.
 
 ```
 {
