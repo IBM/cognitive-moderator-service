@@ -12,11 +12,10 @@ When the reader has completed this journey, they will understand how to:
 
 ## Flow
 1. The user interacts from the Slack app and either sends a text or uploads an image.
-2. The text or image that is used in the Slack for conversation is then passed to an IBM function API by a bot. 
-3. The API is a call to an IBM Function that categorizes the text or images based on the response of Watson Visual Recognition or Watson Natural Language Processing.
-4. Watson Visual Recognition categorizes the uploaded image using default and explicit classifier.
-5. Watson Natural Language Processing categorizes the text, if text is send as part of slack communication.
-6. IBM function then gets the response and if the text is not polite, a message is sent by the bot to the Slack user to be more polite using [Slack post message API](https://api.slack.com/methods/chat.postMessage). If the image used is explicit, the image will be deleted by the IBM function using [Slack files delete API](https://api.slack.com/methods/files.delete).
+2. The text or image that is used in the Slack for conversation is then passed to an IBM function API by a bot. The API is a call to an IBM Function that categorizes the text or images based on the response of Watson Visual Recognition or Watson Natural Language Processing.
+3. Watson Visual Recognition categorizes the uploaded image using default and explicit classifier.
+4. Watson Natural Language Processing categorizes the text, if text is send as part of slack communication.
+5. IBM function then gets the response and if the text is not polite, a message is sent by the bot to the Slack user to be more polite using [Slack post message API](https://api.slack.com/methods/chat.postMessage). If the image used is explicit, the image will be deleted by the IBM function using [Slack files delete API](https://api.slack.com/methods/files.delete).
 
 
 ## Included components
