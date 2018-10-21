@@ -1,0 +1,27 @@
+{
+  "name": "cognitive-moderator-service-master",
+  "version": "1.0.0",
+  "description": "In this code pattern, we will create a chatbot using IBM functions and Watson services. The chatbot flow will be enhanced by using Visual Recognition and Natural Language Understanding to identify and remove explicit images and or detect anger and ugly messages",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaiiyer/cognitive-moderator-service.git"
+  },
+  "keywords": [
+    "Slack",
+    "IBM",
+    "Watson"
+  ],
+  "author": "Kai Iyer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kaiiyer/cognitive-moderator-service/issues"
+  },
+  "homepage": "https://github.com/kaiiyer/cognitive-moderator-service#readme"
+}
