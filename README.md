@@ -102,6 +102,7 @@ Once the credentials for both IBM Cloud and Slack are noted, we can now deploy t
 
 Copy `params.sample.json` to `params.json` using `cp params.sample.json params.json` and replace the values with the credentials you have noted in proper place holders.
 
+For getting the  VISUAL_RECOGNITION_IAM_APIKEY visit : https://console.bluemix.net/openwhisk/learn/api-key
 ```
 {
     "NLU_USERNAME": "<NLU username>",
@@ -121,6 +122,7 @@ Copy `params.sample.json` to `params.json` using `cp params.sample.json params.j
 Make sure IBM cloud CLI are installed if you haven't already using the following link: 
 https://console.bluemix.net/docs/cli/index.html#overview
 
+For Setting up the IBM Cloud Functions CLI visit: https://console.bluemix.net/openwhisk/learn/cli
 * Deploy the function to IBM cloud. Make sure you are in the project directory then, from Terminal run:
 
 ```
