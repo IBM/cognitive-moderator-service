@@ -100,9 +100,8 @@ Select `Permissions Scopes` that will be used by the bot that we will be creatin
 ## 4. Deploy the function to IBM Cloud
 Once the credentials for both IBM Cloud and Slack are noted, we can now deploy the function to IBM Cloud.
 
-Copy `params.sample.json` to `params.json` using `cp params.sample.json params.json` and replace the values with the credentials you have noted in proper place holders.
+Copy `params.sample.json` to `params.json` using `cp params.sample.json params.json` and replace the values with the credentials you have noted in proper place holders. Get a `VISUAL_RECOGNITION_IAM_APIKEY` [here](https://console.bluemix.net/openwhisk/learn/api-key).
 
-For getting the  VISUAL_RECOGNITION_IAM_APIKEY visit : https://console.bluemix.net/openwhisk/learn/api-key
 ```
 {
     "NLU_USERNAME": "<NLU username>",
@@ -119,10 +118,8 @@ For getting the  VISUAL_RECOGNITION_IAM_APIKEY visit : https://console.bluemix.n
 
 ```
 
-Make sure IBM cloud CLI are installed if you haven't already using the following link: 
-https://console.bluemix.net/docs/cli/index.html#overview
+Install the [IBM cloud CLI)(https://console.bluemix.net/docs/cli/index.html#overview) if you haven't already, including the [IBM Cloud Functions CLI plugin](https://console.bluemix.net/openwhisk/learn/cli).
 
-For Setting up the IBM Cloud Functions CLI visit: https://console.bluemix.net/openwhisk/learn/cli
 * Deploy the function to IBM cloud. Make sure you are in the project directory then, from Terminal run:
 
 ```
