@@ -20,7 +20,7 @@ When the reader has completed this journey, they will understand how to:
 
 ## Included components
 
-* [IBM Functions](https://console.bluemix.net/openwhisk/): IBM Cloud Functions (based on Apache OpenWhisk) is a Function-as-a-Service (FaaS) platform which executes functions in response to incoming events and costs nothing when not in use.
+* [IBM Functions](https://cloud.ibm.com/openwhisk/): IBM Cloud Functions (based on Apache OpenWhisk) is a Function-as-a-Service (FaaS) platform which executes functions in response to incoming events and costs nothing when not in use.
 * [IBM Watson Visual Recognition](https://www.ibm.com/watson/services/visual-recognition/): Quickly and accurately tag, classify and train visual content using machine learning.
 * [IBM Watson Natural Language Understanding](https://www.ibm.com/watson/developercloud/natural-language-understanding.html): Analyze text to extract meta-data from content such as concepts, entities, keywords, categories, sentiment, emotion, relations, semantic roles, using natural language understanding.
 
@@ -54,11 +54,11 @@ $ cd cognitive-moderator-service
 
 ## 2. Create Watson Visual Recognition and natural language understanding service with IBM Cloud
 
-If you do not already have a IBM Cloud account, [sign up for IBM Cloud](https://console.bluemix.net/registration).
+If you do not already have a IBM Cloud account, [sign up for IBM Cloud](https://cloud.ibm.com/registration).
 Create the following services:
 
-* [**Watson Visual Recognition**](https://console.bluemix.net/catalog/services/visual-recognition)
-* [**Watson Natural Language Understanding**](https://console.bluemix.net/catalog/services/natural-language-understanding) 
+* [**Watson Visual Recognition**](https://cloud.ibm.com/catalog/services/visual-recognition)
+* [**Watson Natural Language Understanding**](https://cloud.ibm.com/catalog/services/natural-language-understanding) 
 
 > Make note of the service credentials when creating services which will be later used when creating a function.
 
@@ -100,7 +100,7 @@ Select `Permissions Scopes` that will be used by the bot that we will be creatin
 ## 4. Deploy the function to IBM Cloud
 Once the credentials for both IBM Cloud and Slack are noted, we can now deploy the function to IBM Cloud.
 
-Copy `params.sample.json` to `params.json` using `cp params.sample.json params.json` and replace the values with the credentials you have noted in proper place holders. Get a `VISUAL_RECOGNITION_IAM_APIKEY` [here](https://console.bluemix.net/openwhisk/learn/api-key).
+Copy `params.sample.json` to `params.json` using `cp params.sample.json params.json` and replace the values with the credentials you have noted in proper place holders. Get a `VISUAL_RECOGNITION_IAM_APIKEY` [here](https://cloud.ibm.com/openwhisk/learn/api-key).
 
 ```
 {
@@ -118,7 +118,7 @@ Copy `params.sample.json` to `params.json` using `cp params.sample.json params.j
 
 ```
 
-Install the [IBM cloud CLI)(https://console.bluemix.net/docs/cli/index.html#overview) if you haven't already, including the [IBM Cloud Functions CLI plugin](https://console.bluemix.net/openwhisk/learn/cli).
+Install the [IBM cloud CLI)(https://cloud.ibm.com/docs/cli/index.html#overview) if you haven't already, including the [IBM Cloud Functions CLI plugin](https://cloud.ibm.com/openwhisk/learn/cli).
 
 * Deploy the function to IBM cloud. Make sure you are in the project directory then, from Terminal run:
 
@@ -194,7 +194,7 @@ When you upload an **explicit** image, the image will be deleted from the Slack 
 
 # Links
 
-* [IBM Cloud Functions](https://console.bluemix.net/docs/openwhisk/index.html#getting-started-with-cloud-functions) - Getting started with IBM Cloud functions
+* [IBM Cloud Functions](https://cloud.ibm.com/docs/openwhisk/index.html#getting-started-with-cloud-functions) - Getting started with IBM Cloud functions
 * [Watson Node.js SDK](https://github.com/watson-developer-cloud/node-sdk): Visit the Node.js library to access IBM Watson services.
 * [Sample Node.js application for Language Translator](https://github.com/watson-developer-cloud/language-translator-nodejs): Sample Node.JS application for Watson Language Translator service
 
