@@ -1,5 +1,5 @@
 # Create a cognitive moderator chatbot for anger detection, natural language understanding and explicit images removal
-In this code pattern, we will create a chatbot using IBM functions and Watson services. The chatbot flow will be enhanced by using Visual Recognition and Natural Language Understanding to identify and remove explicit images and or detect anger and ugly messages 
+In this code pattern, we will create a chatbot using IBM functions and Watson services. The chatbot flow will be enhanced by using Visual Recognition and Natural Language Understanding to identify and remove explicit images and or detect anger and ugly messages
 
 When the reader has completed this journey, they will understand how to:
 
@@ -20,7 +20,7 @@ When the reader has completed this journey, they will understand how to:
 
 ## Included components
 
-* [IBM Functions](https://console.bluemix.net/openwhisk/): IBM Cloud Functions (based on Apache OpenWhisk) is a Function-as-a-Service (FaaS) platform which executes functions in response to incoming events and costs nothing when not in use.
+* [IBM Functions](https://cloud.ibm.com/openwhisk): IBM Cloud Functions (based on Apache OpenWhisk) is a Function-as-a-Service (FaaS) platform which executes functions in response to incoming events and costs nothing when not in use.
 * [IBM Watson Visual Recognition](https://www.ibm.com/watson/services/visual-recognition/): Quickly and accurately tag, classify and train visual content using machine learning.
 * [IBM Watson Natural Language Understanding](https://www.ibm.com/watson/developercloud/natural-language-understanding.html): Analyze text to extract meta-data from content such as concepts, entities, keywords, categories, sentiment, emotion, relations, semantic roles, using natural language understanding.
 
@@ -31,7 +31,7 @@ When the reader has completed this journey, they will understand how to:
 
 # Watch the Video
 
-[![](http://img.youtube.com/vi/9c7NuamK8JA/0.jpg)](https://youtu.be/9c7NuamK8JA)
+[![](https://img.youtube.com/vi/9c7NuamK8JA/0.jpg)](https://youtu.be/9c7NuamK8JA)
 
 
 # Steps
@@ -54,11 +54,11 @@ $ cd cognitive-moderator-service
 
 ## 2. Create Watson Visual Recognition and natural language understanding service with IBM Cloud
 
-If you do not already have a IBM Cloud account, [sign up for IBM Cloud](https://console.bluemix.net/registration).
+If you do not already have a IBM Cloud account, [sign up for IBM Cloud](https://cloud.ibm.com/registration).
 Create the following services:
 
-* [**Watson Visual Recognition**](https://console.bluemix.net/catalog/services/visual-recognition)
-* [**Watson Natural Language Understanding**](https://console.bluemix.net/catalog/services/natural-language-understanding) 
+* [**Watson Visual Recognition**](https://cloud.ibm.com/catalog/services/visual-recognition)
+* [**Watson Natural Language Understanding**](https://cloud.ibm.com/catalog/services/natural-language-understanding)
 
 > Make note of the service credentials when creating services which will be later used when creating a function.
 
@@ -100,7 +100,7 @@ Select `Permissions Scopes` that will be used by the bot that we will be creatin
 ## 4. Deploy the function to IBM Cloud
 Once the credentials for both IBM Cloud and Slack are noted, we can now deploy the function to IBM Cloud.
 
-Copy `params.sample.json` to `params.json` using `cp params.sample.json params.json` and replace the values with the credentials you have noted in proper place holders. Get a `VISUAL_RECOGNITION_IAM_APIKEY` [here](https://console.bluemix.net/openwhisk/learn/api-key).
+Copy `params.sample.json` to `params.json` using `cp params.sample.json params.json` and replace the values with the credentials you have noted in proper place holders. Get a `VISUAL_RECOGNITION_IAM_APIKEY` [here](https://cloud.ibm.com/openwhisk/learn/api-key).
 
 ```
 {
@@ -118,7 +118,7 @@ Copy `params.sample.json` to `params.json` using `cp params.sample.json params.j
 
 ```
 
-Install the [IBM cloud CLI)(https://console.bluemix.net/docs/cli/index.html#overview) if you haven't already, including the [IBM Cloud Functions CLI plugin](https://console.bluemix.net/openwhisk/learn/cli).
+Install the [IBM cloud CLI)(https://cloud.ibm.com/docs/cli/index.html#overview) if you haven't already, including the [IBM Cloud Functions CLI plugin](https://cloud.ibm.com/openwhisk/learn/cli).
 
 * Deploy the function to IBM cloud. Make sure you are in the project directory then, from Terminal run:
 
@@ -167,7 +167,7 @@ Now you can use slack to test. If rude message are sent which NLU categorized as
 
 * **Test Case 2: Usage of explicit image**
 
-Upload an image that's explicit. 
+Upload an image that's explicit.
 
 > An explicit image is an image that contains objectionable or adult content that may be unsuitable for general audiences.
 
@@ -194,18 +194,18 @@ When you upload an **explicit** image, the image will be deleted from the Slack 
 
 # Links
 
-* [IBM Cloud Functions](https://console.bluemix.net/docs/openwhisk/index.html#getting-started-with-cloud-functions) - Getting started with IBM Cloud functions
+* [IBM Cloud Functions](https://cloud.ibm.com/docs/openwhisk/index.html#getting-started-with-cloud-functions) - Getting started with IBM Cloud functions
 * [Watson Node.js SDK](https://github.com/watson-developer-cloud/node-sdk): Visit the Node.js library to access IBM Watson services.
 * [Sample Node.js application for Language Translator](https://github.com/watson-developer-cloud/language-translator-nodejs): Sample Node.JS application for Watson Language Translator service
 
 
 # Learn more
 
-* **Artificial Intelligence Code Patterns**: Enjoyed this Code Pattern? Check out our other [AI Code Patterns](https://developer.ibm.com/code/technologies/artificial-intelligence/).
+* **Artificial Intelligence Code Patterns**: Enjoyed this Code Pattern? Check out our other [AI Code Patterns](https://developer.ibm.com/technologies/artificial-intelligence/).
 * **AI and Data Code Pattern Playlist**: Bookmark our [playlist](https://www.youtube.com/playlist?list=PLzUbsvIyrNfknNewObx5N7uGZ5FKH0Fde) with all of our Code Pattern videos
 * **With Watson**: Want to take your Watson app to the next level? Looking to utilize Watson Brand assets? [Join the With Watson program](https://www.ibm.com/watson/with-watson/) to leverage exclusive brand, marketing, and tech resources to amplify and accelerate your Watson embedded commercial solution.
 
 # License
-This code pattern is licensed under the Apache Software License, Version 2.  Separate third party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the [Developer Certificate of Origin, Version 1.1 (DCO)](https://developercertificate.org/) and the [Apache Software License, Version 2](http://www.apache.org/licenses/LICENSE-2.0.txt).
+This code pattern is licensed under the Apache Software License, Version 2.  Separate third party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the [Developer Certificate of Origin, Version 1.1 (DCO)](https://developercertificate.org/) and the [Apache Software License, Version 2](https://www.apache.org/licenses/LICENSE-2.0.txt).
 
-[Apache Software License (ASL) FAQ](http://www.apache.org/foundation/license-faq.html#WhatDoesItMEAN)
+[Apache Software License (ASL) FAQ](https://www.apache.org/foundation/license-faq.html#WhatDoesItMEAN)
