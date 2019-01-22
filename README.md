@@ -48,7 +48,7 @@ When the reader has completed this journey, they will understand how to:
 Clone the `cognitive-moderator-service` repo locally. In a terminal, run:
 
 ```
-$ git clone https://github.com/IBM/cognitive-moderator-service.git
+$ git clone https://github.com/IBM/cognitive-moderator-service
 $ cd cognitive-moderator-service
 ```
 
