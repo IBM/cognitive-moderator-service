@@ -101,8 +101,8 @@ def main(event):
     if message_text:
         print('Text Message:' + message_text)
         natural_language_understanding = NaturalLanguageUnderstandingV1(
-            username=event['NLU_USERNAME'],
-            password=event['NLU_PASSWORD'],
+            url=event['NLU_URL'],
+            iam_apikey=event['NLU_APIKEY'],
             version='2018-03-16')
 
         response = natural_language_understanding.analyze(
