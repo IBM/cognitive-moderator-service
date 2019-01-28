@@ -102,10 +102,12 @@ Once the credentials for both IBM Cloud and Slack are noted, we can now deploy t
 
 Copy `params.sample.json` to `params.json` using `cp params.sample.json params.json` and replace the values with the credentials you have noted in proper place holders. Get a `VISUAL_RECOGNITION_IAM_APIKEY` [here](https://cloud.ibm.com/openwhisk/learn/api-key).
 
+> NOTE: `NLU_URL` is optional. You can also remove the `NLU_URL` key/value from the below json and it uses the global URL part of the SDK.
+
 ```
 {
-    "NLU_USERNAME": "<NLU username>",
-    "NLU_PASSWORD": "<NLU password>",
+    "NLU_APIKEY": "<NLU username>",
+    "NLU_URL": "<NLU password>",
 
     "VISUAL_RECOGNITION_IAM_APIKEY": "<Visual Recognition IAM API Key>",
 

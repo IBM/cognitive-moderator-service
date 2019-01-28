@@ -1,6 +1,6 @@
 {
-    "NLU_USERNAME": "<NLU username>",
-    "NLU_PASSWORD": "<NLU password>",
+    "NLU_APIKEY": "<NLU apikey>",
+    "NLU_URL": "<NLU URL>",    
 
     "VISUAL_RECOGNITION_IAM_APIKEY": "<Visual Recognition IAM API Key>",
 
