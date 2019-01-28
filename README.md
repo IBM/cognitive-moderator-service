@@ -106,8 +106,8 @@ Copy `params.sample.json` to `params.json` using `cp params.sample.json params.j
 
 ```
 {
-    "NLU_APIKEY": "<NLU username>",
-    "NLU_URL": "<NLU password>",
+    "NLU_APIKEY": "<NLU apikey>",
+    "NLU_URL": "<NLU url>",
 
     "VISUAL_RECOGNITION_IAM_APIKEY": "<Visual Recognition IAM API Key>",
 
