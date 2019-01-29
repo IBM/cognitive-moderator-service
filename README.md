@@ -142,7 +142,13 @@ Now you can login to IBM cloud and see the function by going to `IBM functions`,
 1. Click on the `WatsonModerator` action to go into details.
 2. Click on `Endpoints` on the left menu.
 3. Enable the action as a web action and save the change. You should see a `Web Action` icon next to the function name as shown here.
+
 ![](doc/source/images/function-enable-web-action.jpg)
+
+Alternatively, you can use the CLI to enable the function as a `web action`
+```
+ibmcloud wsk action update WatsonModerator --web true
+```
 
 
 * Expose the function so that it can be accessed using an API
