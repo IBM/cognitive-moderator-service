@@ -125,30 +125,25 @@ Install the [IBM cloud CLI)(https://cloud.ibm.com/docs/cli/index.html#overview) 
 * Deploy the function to IBM cloud. Make sure you are in the project directory then, from Terminal run:
 
 ```
-ibmcloud wsk action create WatsonModerator functions/bot_moderator_function.py --param-file params.json --kind python-jessie:3
+ibmcloud wsk action create WatsonModerator functions/bot_moderator_function.py --param-file params.json --kind python:3.7 --web true
 
 ```
+>Note: The above command pushes the function with python 3.7 runtime and the function is written to suit the runtime. 
+
+>If you want to use python 3.6, comment or remove out the below code:
+
+> `response = response.get_result()` (line 122) from the function and then run
+
+> `ibmcloud wsk action create WatsonModerator functions/bot_moderator_function.py --param-file params.json --kind python:3.6 --web true`
+
 * After the function is created, you can run following command to update the function if there are any changes:
 
 ```
-ibmcloud wsk action update WatsonModerator functions/bot_moderator_function.py --param-file params.json --kind python-jessie:3
+ibmcloud wsk action update WatsonModerator functions/bot_moderator_function.py --param-file params.json --kind python:3.7
 ```
 
 Now you can login to IBM cloud and see the function by going to `IBM functions`, click `Actions`. You should see the function in the list of function in this page.
 ![](doc/source/images/ibm-cloud-functions.png)
-
-* Enable the function as a web action
-
-1. Click on the `WatsonModerator` action to go into details.
-2. Click on `Endpoints` on the left menu.
-3. Enable the action as a web action and save the change. You should see a `Web Action` icon next to the function name as shown here.
-
-![](doc/source/images/function-enable-web-action.jpg)
-
-Alternatively, you can use the CLI to enable the function as a `web action`
-```
-ibmcloud wsk action update WatsonModerator --web true
-```
 
 
 * Expose the function so that it can be accessed using an API
