@@ -130,7 +130,7 @@ ibmcloud wsk action create WatsonModerator functions/bot_moderator_function.py -
 ```
 >Note: The above command pushes the function with python 3.7 runtime and the function is written to suit the runtime. 
 
->If you want to use python 3.6, comment or remove out the below code:
+>If you want to use python 3.6, comment out or remove the below code:
 
 > `response = response.get_result()` (line 122) from the function and then run
 
@@ -142,7 +142,7 @@ ibmcloud wsk action create WatsonModerator functions/bot_moderator_function.py -
 ibmcloud wsk action update WatsonModerator functions/bot_moderator_function.py --param-file params.json --kind python:3.7
 ```
 
-Now you can login to IBM cloud and see the function by going to `IBM functions`, click `Actions`. You should see the function in the list of function in this page.
+Now you can login to IBM Cloud and see the function by going to `IBM functions`, click `Actions`. You should see the function in the list of functions in this page.
 ![](doc/source/images/ibm-cloud-functions.png)
 
 
