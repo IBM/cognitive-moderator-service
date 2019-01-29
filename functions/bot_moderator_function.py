@@ -131,7 +131,7 @@ def main(event):
             print(anger)
             if disgust>.5 or anger>.5:
                 print('In appropriate text.....')
-                post_message(event,channel,"please be more polite ...")
+                post_message(event,channel,"please be more polite...")
     
     return {"payload": "Done"}
 
