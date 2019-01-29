@@ -107,6 +107,7 @@ def main(event):
 
         response = natural_language_understanding.analyze(
         text=message_text,
+        language='en',
         features=Features(
                 entities=EntitiesOptions(
                 emotion=True,
@@ -118,6 +119,7 @@ def main(event):
                 limit=2))
             )
         
+        response = response.get_result()
         print('response:'+json.dumps(response, indent=2))
         
         keyword = response.get('keywords')
