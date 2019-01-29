@@ -74,7 +74,7 @@ Create the following services:
 * Create bot user from `Bot Users`. Provide a `Display Name` and `Default Username` for the bot and click `Save Changes`.
 ![](doc/source/images/bot-users.png)
 
-* From `OAuth and Permissions`, Save the `OAuth Access Token` and `Bot User OAuth Access Token` for later use by the IBM cloud function.
+* From `OAuth and Permissions`, Save the `OAuth Access Token` for later use by the IBM cloud function.
 ![](doc/source/images/oauth-access-token.png)
 
 Select `Permissions Scopes` that will be used by the bot that we will be creating next.
@@ -144,7 +144,7 @@ Now you can login to IBM Cloud and see the function by going to `IBM functions`,
 3. Click `Create Operation` and in the dialog box that appears, provide the following like in the figure below:
 ![](doc/source/images/create-api-2.png)
 
-4. From the `API Explorer` select the `API URL` and add the URL to the `Request URL` in Slack App you created in above steps.
+4. From the `API Explorer` select the `API URL` and save it for later use.
 ![](doc/source/images/create-api-3.png)
 
 * Add `Event Subscriptions` for your app by clicking on to `Add features and functionality` from the main page of the app.
