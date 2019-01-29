@@ -141,7 +141,7 @@ Now you can login to IBM Cloud and see the function by going to `IBM functions`,
 2. Provide `API Name`, `Base path for API`
 ![](doc/source/images/create-api-1.png)
 
-3. Click `Create Operation` and in the dialog box that appears, provide the following like in the figure below:
+3. Click `Create Operation` and in the dialog box that appears, provide the following like in the figure below and click `create`
 ![](doc/source/images/create-api-2.png)
 
 4. From the `API Explorer` select the `API URL` and save it for later use.
