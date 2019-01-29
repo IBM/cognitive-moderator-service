@@ -104,9 +104,10 @@ def main(event):
             url=event['NLU_URL'],
             iam_apikey=event['NLU_APIKEY'],
             version='2018-03-16')
-
+        print('API Key: '+event['NLU_APIKEY'])
         response = natural_language_understanding.analyze(
         text=message_text,
+        language='en',  
         features=Features(
                 entities=EntitiesOptions(
                 emotion=True,
@@ -118,6 +119,7 @@ def main(event):
                 limit=2))
             )
         
+        response = response.get_result()
         print('response:'+json.dumps(response, indent=2))
         
         keyword = response.get('keywords')
