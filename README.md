@@ -71,18 +71,8 @@ Create the following services:
 * After the app is created, you will be taken to a page where you can configure the Slack app. Make note of **`Verification Token`**  which will be used later in the function.
 ![](doc/source/images/app-credentials.png)
 
-* Add `Event Subscriptions` for your app by clicking on to `Add features and functionality` from the main page of the app.
-![](doc/source/images/event-subscriptions.png)
-
-In the `Event Subscriptions` page, enable it by turning `on` using the `on/off` toggle button and `Add Workspace and Bot Events` in subsequent sections. Add Following events for both:
-
-1. message.channels
-2. message.group
-3. message.im
-
-![](doc/source/images/events.png)
-
-* For now leave the `Request URL` empty. We will fill it in when the `IBM Cloud Function` is exposed through an API.
+* Create bot user from `Bot Users`. Provide a `Display Name` and `Default Username` for the bot and click `Save Changes`.
+![](doc/source/images/bot-users.png)
 
 * From `OAuth and Permissions`, Save the `OAuth Access Token` and `Bot User OAuth Access Token` for later use by the IBM cloud function.
 ![](doc/source/images/oauth-access-token.png)
@@ -90,9 +80,6 @@ In the `Event Subscriptions` page, enable it by turning `on` using the `on/off` 
 Select `Permissions Scopes` that will be used by the bot that we will be creating next.
 
 ![](doc/source/images/permission-scopes.png)
-
-* Create bot user from `Bot Users`. Provide a `Display Name` and `Default Username` for the bot and click `Save Changes`.
-![](doc/source/images/bot-users.png)
 
 * Once this is done make sure you `reinstall or install app` from Install App section.
 ![](doc/source/images/reinstall-app.png)
@@ -157,15 +144,27 @@ Now you can login to IBM Cloud and see the function by going to `IBM functions`,
 3. Click `Create Operation` and in the dialog box that appears, provide the following like in the figure below:
 ![](doc/source/images/create-api-2.png)
 
-4. From the `API Explorer` select the `API Url` and add the URL to the `Request URL` in Slack App you created in above steps.
+4. From the `API Explorer` select the `API URL` and add the URL to the `Request URL` in Slack App you created in above steps.
 ![](doc/source/images/create-api-3.png)
 
-> Note that you need to `Reinstall App` after you make any changes to the app for example: `Request URL`.
+* Add `Event Subscriptions` for your app by clicking on to `Add features and functionality` from the main page of the app.
+![](doc/source/images/event-subscriptions.png)
+
+Add the `API URL` of the function from IBM Cloud to the `Request URL` in Slack App
 
 ![](doc/source/images/request-url.png)
 
 > Make sure the URL is verified. To be verified the API needs to return a response to the request that Slack sends to this `Request URL` with `challenge` parameter.
 
+In the `Event Subscriptions` page, enable it by turning `on` using the `on/off` toggle button and `Add Workspace and Bot Events` in subsequent sections. Add Following events for both:
+
+1. message.channels
+2. message.group
+3. message.im
+
+![](doc/source/images/events.png)
+
+> Note that you need to `Reinstall App` after you make any changes to the app for example: `Request URL`.
 
 ## 5. Test using slack
 
