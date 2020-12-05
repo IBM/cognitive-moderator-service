@@ -1,10 +1,9 @@
 # Create a cognitive moderator chatbot for anger detection, natural language understanding and explicit images removal
-In this code pattern, we will create a chatbot using IBM functions and Watson services. The chatbot flow will be enhanced by using Visual Recognition and Natural Language Understanding to identify and remove explicit images and or detect anger and ugly messages
+In this code pattern, we will create a chatbot using IBM functions and Watson services. The chatbot flow will be enhanced by using  Natural Language Understanding to identify angry and disrespectful messages
 
 When the reader has completed this journey, they will understand how to:
 
 * Create a chatbot that integrates with Slack via IBM Functions
-* Use Watson Visual Recognition to detect explicit images (in beta)
 * Use Watson Natural Understanding to detect emotions in a conversation
 * Identify entities with Watson Natural Language Understanding
 
@@ -13,7 +12,7 @@ When the reader has completed this journey, they will understand how to:
 ## Flow
 1. The user interacts from the Slack app and either sends a text or uploads an image.
 2. The text or image that is used in the Slack for conversation is then passed to an IBM function API by a bot. The API is a call to an IBM Function that categorizes the text or images based on the response of Watson Visual Recognition or Watson Natural Language Processing.
-3. Watson Visual Recognition categorizes the uploaded image using default and explicit classifier.
+3. (Optional) Watson Visual Recognition categorizes the uploaded image using default and explicit classifier. (Deprecated, see [Maximo Visual Inspection](https://www.ibm.com/support/pages/ibm-maximo-visual-inspection) instead).
 4. Watson Natural Language Processing categorizes the text, if text is send as part of slack communication.
 5. IBM function then gets the response and if the text is not polite, a message is sent by the bot to the Slack user to be more polite using [Slack post message API](https://api.slack.com/methods/chat.postMessage). If the image used is explicit, the image will be deleted by the IBM function using [Slack files delete API](https://api.slack.com/methods/files.delete).
 
@@ -21,7 +20,6 @@ When the reader has completed this journey, they will understand how to:
 ## Included components
 
 * [IBM Functions](https://cloud.ibm.com/openwhisk): IBM Cloud Functions (based on Apache OpenWhisk) is a Function-as-a-Service (FaaS) platform which executes functions in response to incoming events and costs nothing when not in use.
-* [IBM Watson Visual Recognition](https://www.ibm.com/watson/services/visual-recognition/): Quickly and accurately tag, classify and train visual content using machine learning.
 * [IBM Watson Natural Language Understanding](https://www.ibm.com/watson/developercloud/natural-language-understanding.html): Analyze text to extract meta-data from content such as concepts, entities, keywords, categories, sentiment, emotion, relations, semantic roles, using natural language understanding.
 
 ## Featured technologies
@@ -30,6 +28,7 @@ When the reader has completed this journey, they will understand how to:
 * [Slack Bots](https://api.slack.com/bot-users) Enable conversations between users and apps in Slack by building bots.
 
 # Watch the Video
+> Note: The video shows the Slack bot using Watson Visual Recognition to remove explicit images. Currently Watson Visual Recognition is discontinued. Existing instances are supported until 1 December 2021, but as of 7 January 2021, you can't create instances. Any instance that is provisioned on 1 December 2021 will be deleted. Please view the [Maximo Visual Inspection trial](https://www.ibm.com/support/pages/ibm-maximo-visual-inspection) as a way to get started with image classification.
 
 [![](https://img.youtube.com/vi/9c7NuamK8JA/0.jpg)](https://youtu.be/9c7NuamK8JA)
 
@@ -37,7 +36,7 @@ When the reader has completed this journey, they will understand how to:
 # Steps
 
 1. [Clone the repo](#1-clone-the-repo)
-2. [Create Watson Visual Recognition and Natural Language Understanding service with IBM Cloud](#2-create-watson-visual-recognition-and-natural-language-understanding-service-with-ibm-cloud)
+2. [Create Natural Language Understanding service with IBM Cloud](#2-create-natural-language-understanding-service-with-ibm-cloud)
 3. [Create Slack App and Bot for a workspace](#3-create-slack-app-and-bot-for-a-workspace)
 4. [Deploy the function to IBM Cloud](#4-deploy-the-function-to-ibm-cloud)
 5. [Test using slack](#5-test-using-slack)
@@ -52,12 +51,11 @@ $ git clone https://github.com/IBM/cognitive-moderator-service
 $ cd cognitive-moderator-service
 ```
 
-## 2. Create Watson Visual Recognition and natural language understanding service with IBM Cloud
+## 2. Create natural language understanding service with IBM Cloud
 
 If you do not already have a IBM Cloud account, [sign up for IBM Cloud](https://cloud.ibm.com/registration).
 Create the following services:
 
-* [**Watson Visual Recognition**](https://cloud.ibm.com/catalog/services/visual-recognition)
 * [**Watson Natural Language Understanding**](https://cloud.ibm.com/catalog/services/natural-language-understanding)
 
 > Make note of the service credentials when creating services which will be later used when creating a function.
@@ -87,7 +85,7 @@ Select `Permissions Scopes` that will be used by the bot that we will be creatin
 ## 4. Deploy the function to IBM Cloud
 Once the credentials for both IBM Cloud and Slack are noted, we can now deploy the function to IBM Cloud.
 
-Copy `params.sample.json` to `params.json` using `cp params.sample.json params.json` and replace the values with the credentials you have noted in proper place holders. Get a `VISUAL_RECOGNITION_IAM_APIKEY` [here](https://cloud.ibm.com/openwhisk/learn/api-key).
+Copy `params.sample.json` to `params.json` using `cp params.sample.json params.json` and replace the values with the credentials you have noted in proper place holders. You can leave the `VISUAL_RECOGNITION_IAM_APIKEY` blank.
 
 > NOTE: `NLU_URL` is optional. You can also remove the `NLU_URL` key/value from the below json and it uses the global URL part of the SDK.
 
@@ -96,7 +94,7 @@ Copy `params.sample.json` to `params.json` using `cp params.sample.json params.j
     "NLU_APIKEY": "<NLU apikey>",
     "NLU_URL": "<NLU url>",
 
-    "VISUAL_RECOGNITION_IAM_APIKEY": "<Visual Recognition IAM API Key>",
+    "VISUAL_RECOGNITION_IAM_APIKEY": "<Visual Recognition IAM API Key, or you can leave this blank>",
 
     "SLACK_VERIFICATION_TOKEN": "<Slack Verification Token>",
     "SLACK_ACCESS_TOKEN": "<Slack OAuth Access Token>",
@@ -168,13 +166,13 @@ In the `Event Subscriptions` page, enable it by turning `on` using the `on/off` 
 
 ## 5. Test using slack
 
-* **Test Case 1: Usage of rude messages**
+* **Test Case: Usage of rude messages**
 
 Now you can use slack to test. If rude message are sent which NLU categorized as `anger` or `disgust` you will see a message from the `bot` that you created from Slack.
 
 ![](doc/source/images/slack-test-1.png)
 
-* **Test Case 2: Usage of explicit image**
+<!-- * **Test Case 2: Usage of explicit image**
 
 Upload an image that's explicit.
 
@@ -184,9 +182,11 @@ When you upload an **explicit** image, the image will be deleted from the Slack 
 
 ![](doc/source/images/explicit-photo-upload.png)
 
-![](doc/source/images/explicit-photo-upload-2.png)
+![](doc/source/images/explicit-photo-upload-2.png) -->
 
 # Sample Output
+
+> Note: The video shows the Slack bot using Watson Visual Recognition to remove explicit images. Currently Watson Visual Recognition is discontinued. Existing instances are supported until 1 December 2021, but as of 7 January 2021, you can't create instances. Any instance that is provisioned on 1 December 2021 will be deleted. Please view the [Maximo Visual Inspection trial](https://www.ibm.com/support/pages/ibm-maximo-visual-inspection) as a way to get started with image classification.
 
 ![](video/Bot4Code.gif)
 
