@@ -1,4 +1,9 @@
 # Create a cognitive moderator chatbot for anger detection, natural language understanding and explicit images removal
+
+## WARNING: This repository is no longer maintained. 
+
+This repository will not be updated. The repository will be kept available in read-only mode.
+
 In this code pattern, we will create a chatbot using IBM functions and Watson services. The chatbot flow will be enhanced by using  Natural Language Understanding to identify angry and disrespectful messages
 
 When the reader has completed this journey, they will understand how to:
